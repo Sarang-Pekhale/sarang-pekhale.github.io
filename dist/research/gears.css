@@ -6,7 +6,7 @@ body[data-page="research"] main.container{max-width:1160px}
 .gear-hub{fill:#fff;stroke:#000;stroke-width:1}
 .gear-domain{cursor:pointer;outline:none}
 .gear-domain text{font:700 16px Roboto,Arial,sans-serif;fill:#000;pointer-events:none}
-.gear-center{font:700 13px Roboto,Arial,sans-serif;fill:#000}
+.gear-center{font:700 13px Roboto,Arial,sans-serif;fill:#408f20}
 .gear-domain:hover .gear-hub{fill:#eee}
 .gear-domain[aria-pressed="true"] .gear-hub{stroke-width:4}
 .gear-domain:focus-visible .gear-hub{stroke-width:4;stroke-dasharray:4 3}
@@ -32,10 +32,11 @@ body[data-page="research"] main.container{max-width:1160px}
 .challenge-items{list-style:none;counter-reset:challenge;margin:0;padding:0;display:grid;gap:28px}
 .challenge-items li{counter-increment:challenge;position:relative;padding-left:38px}
 .challenge-items li:before{content:"0" counter(challenge);position:absolute;left:0;top:1px;font-size:12px;font-weight:600;color:#666}
-.reasoning-pairs{position:relative;display:grid;gap:24px}
-.reasoning-pairs:before{content:"";position:absolute;top:0;bottom:0;left:44.444444%;width:2px;background:#254d16;pointer-events:none}
-.reasoning-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
-.reasoning-pair>div:first-child{padding-right:20px}
-.reasoning-pair>div:last-child{padding-left:22px}
+.reasoning-panel .reasoning-intro{margin:0 0 28px}
+.reasoning-pairs{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.reasoning-column{display:flex;flex-direction:column;gap:24px}
+.reasoning-pairs:before{content:"";position:absolute;top:0;bottom:0;left:44.444444%;width:2px;background:#408f20;pointer-events:none}
+.reasoning-column:first-child{padding-right:20px}
+.reasoning-column:last-child{padding-left:22px}
 @media(max-width:980px){.research-challenges{grid-template-columns:1fr}.challenge-panel,.reasoning-panel{padding:28px}}
-@media(max-width:480px){.challenge-panel,.reasoning-panel{padding:22px 18px}.research-challenges h2{font-size:25px}.research-challenges h3{font-size:17px}.research-challenges p{font-size:14px}.reasoning-pair>div:first-child{padding-right:12px}.reasoning-pair>div:last-child{padding-left:14px}.challenge-items li{padding-left:30px}}
+@media(max-width:480px){.challenge-panel,.reasoning-panel{padding:22px 18px}.research-challenges h2{font-size:25px}.research-challenges h3{font-size:17px}.research-challenges p{font-size:14px}.reasoning-column:first-child{padding-right:12px}.reasoning-column:last-child{padding-left:14px}.challenge-items li{padding-left:30px}}
