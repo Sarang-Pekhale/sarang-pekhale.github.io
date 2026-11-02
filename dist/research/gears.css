@@ -21,7 +21,7 @@ body[data-page="research"] main.container{max-width:1160px}
 @media(prefers-reduced-motion:reduce){.domain-callout,.domain-callout.is-visible{transition:none;transform:none}}
 
 /* Challenges and the reasoning capabilities needed across the three domains. */
-.research-challenges{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:stretch;margin:20px 0 64px}
+.research-challenges{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;align-items:stretch;margin:20px 0 64px}
 .challenge-panel,.reasoning-panel{border-radius:24px;padding:30px;color:#111}
 .challenge-panel{background:#f3f3f3;border:1px solid #dedede}
 .reasoning-panel{background:#fff;border:2px solid #408f20}
