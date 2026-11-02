@@ -16,6 +16,13 @@ const domainImages = {
 };
 Object.values(domainImages).forEach(item => { const image = new Image(); image.src = item.src; });
 let carrier = -90, frame = 0, selected = 0;
+let autoTimer = 0;
+const autoDelay = 6000;
+function scheduleRotation() {
+  window.clearTimeout(autoTimer);
+  if (motion.matches || document.hidden) return;
+  autoTimer = window.setTimeout(() => select((selected + 1) % gears.length), autoDelay);
+}
 function draw() {
   // Fixed ring, 18-tooth sun and 24-tooth planets: move the carrier
   // and spin each gear at the planetary pitch-circle ratio.
@@ -39,9 +46,14 @@ function reveal() {
   callout.setAttribute('aria-hidden', 'false');
   callout.classList.add('is-visible');
   machine.removeAttribute('aria-busy');
+  scheduleRotation();
 }
 function select(index) {
-  if (selected === index && callout.classList.contains('is-visible')) return;
+  window.clearTimeout(autoTimer);
+  if (selected === index && callout.classList.contains('is-visible')) {
+    scheduleRotation();
+    return;
+  }
   cancelAnimationFrame(frame);
   selected = index;
   callout.setAttribute('aria-hidden', 'true');
@@ -74,7 +86,11 @@ gears.forEach((gear, index) => {
     }
   });
 });
-motion.addEventListener('change', () => { if (selected !== null) select(selected); });
+motion.addEventListener('change', () => {
+  select(selected);
+  scheduleRotation();
+});
+document.addEventListener('visibilitychange', scheduleRotation);
 draw();
 reveal();
 // Measure the space below the introduction instead of assuming a screen size.
