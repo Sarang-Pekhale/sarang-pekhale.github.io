@@ -1,0 +1,47 @@
+body[data-page="research"] main.container{max-width:1160px}
+.research-machine{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,500px);gap:22px;align-items:center;min-height:530px;margin:32px 0 56px;color:#000}
+.gear-stage{grid-column:2;grid-row:1}
+.gear-diagram{display:block;width:100%;height:auto;overflow:visible}
+.gear-ring,.gear-sun,.gear-planet{fill:#000;stroke:#000;stroke-width:1}
+.gear-hub{fill:#fff;stroke:#000;stroke-width:1}
+.gear-domain{cursor:pointer;outline:none}
+.gear-domain text{font:700 16px Roboto,Arial,sans-serif;fill:#000;pointer-events:none}
+.gear-center{font:700 13px Roboto,Arial,sans-serif;fill:#408f20}
+.gear-domain:hover .gear-hub{fill:#eee}
+.gear-domain[aria-pressed="true"] .gear-hub{stroke-width:4}
+.gear-domain:focus-visible .gear-hub{stroke-width:4;stroke-dasharray:4 3}
+.domain-callout{grid-column:1;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 65px;align-items:center;gap:20px}
+.domain-detail{border:1px solid #dedede;border-radius:24px;background:#f3f3f3;padding:30px;overflow-wrap:anywhere}
+.domain-detail h2{font-size:28px;font-weight:400;margin-bottom:18px}
+.domain-detail p{font-size:16px;line-height:1.8;margin:0;white-space:pre-line}
+.domain-arrow{display:block;width:65px;fill:#000}
+.domain-callout{opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;pointer-events:none}
+.domain-callout.is-visible{opacity:1;visibility:visible;transform:translateX(0);transition-delay:0s;pointer-events:auto}
+@media(max-width:760px){.research-machine{grid-template-columns:1fr;gap:12px;min-height:0;margin-top:24px}.gear-stage{grid-column:1;grid-row:1;max-width:480px;width:100%;margin:auto}.domain-callout{grid-column:1;grid-row:2;display:flex;flex-direction:column-reverse;gap:8px;padding:0}.domain-arrow{width:44px;height:44px;transform:rotate(90deg)}.domain-detail{width:100%;padding:22px}.research-machine{margin-bottom:36px}}
+@media(prefers-reduced-motion:reduce){.domain-callout,.domain-callout.is-visible{transition:none;transform:none}}
+
+/* Challenges and the reasoning capabilities needed across the three domains. */
+.research-challenges{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:stretch;margin:20px 0 64px}
+.challenge-panel,.reasoning-panel{border-radius:24px;padding:30px;color:#111}
+.challenge-panel{background:#f3f3f3;border:1px solid #dedede}
+.reasoning-panel{background:#fff;border:2px solid #408f20}
+.research-challenges h2{font-size:28px;font-weight:500;letter-spacing:-.4px;margin:0 0 24px}
+.research-challenges h3{font-size:18px;font-weight:600;line-height:1.35;margin:0 0 10px}
+.research-challenges p{font-size:15px;line-height:1.65;margin:0}
+.challenge-items{list-style:none;counter-reset:challenge;margin:0;padding:0;display:grid;gap:28px}
+.challenge-items li{counter-increment:challenge;position:relative;padding-left:38px}
+.challenge-items li:before{content:"0" counter(challenge);position:absolute;left:0;top:1px;font-size:12px;font-weight:600;color:#666}
+.reasoning-panel .reasoning-intro{margin:0 0 28px}
+.reasoning-pairs{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr)}
+.reasoning-column{display:flex;flex-direction:column;gap:24px}
+.reasoning-pairs:before{content:"";position:absolute;top:0;bottom:0;left:44.444444%;width:2px;background:#408f20;pointer-events:none}
+.reasoning-column:first-child{padding-right:20px}
+.reasoning-column:last-child{padding-left:22px}
+@media(max-width:980px){.research-challenges{grid-template-columns:1fr}.challenge-panel,.reasoning-panel{padding:28px}}
+@media(max-width:480px){.challenge-panel,.reasoning-panel{padding:22px 18px}.research-challenges h2{font-size:25px}.research-challenges h3{font-size:17px}.research-challenges p{font-size:14px}.reasoning-column:first-child{padding-right:12px}.reasoning-column:last-child{padding-left:14px}.challenge-items li{padding-left:30px}}
+
+.research-directions{display:grid;gap:24px;margin:0 0 24px}
+.research-direction{background:#fff9df;border:1px solid #eee4b9;border-radius:24px;padding:30px;min-height:160px}
+.research-direction h2{font-size:28px;font-weight:500;margin:0 0 18px}
+.research-direction p{font-size:16px;line-height:1.8;margin:0}
+@media(max-width:480px){.research-direction{padding:22px 18px;min-height:140px}.research-direction h2{font-size:25px}}
