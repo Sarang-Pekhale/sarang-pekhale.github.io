@@ -58,3 +58,7 @@ body[data-page="research"] main.container{max-width:1160px}
 .reasoning-item-title{display:flex;align-items:center;gap:12px}
 .reasoning-icon{display:block;flex:0 0 36px;width:36px;height:36px;color:#408f20}
 @media(max-width:480px){.reasoning-item-title{gap:8px}.reasoning-icon{flex-basis:28px;width:28px;height:28px}}
+
+.domain-story{display:flex;flex-direction:column;align-items:stretch;gap:16px;min-width:0}
+.domain-image{display:block;width:100%;height:160px;object-fit:contain;margin:0 auto}
+@media(min-width:761px){.domain-image{height:min(160px,calc(var(--research-gear-size,500px) * .32))}}

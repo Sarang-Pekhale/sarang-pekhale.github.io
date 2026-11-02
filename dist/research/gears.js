@@ -9,6 +9,12 @@ const callout = machine.querySelector('.domain-callout');
 callout.hidden = false;
 const sun = machine.querySelector('.gear-sun');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
+const domainImages = {
+  discovery: {src:'./discovery.png', alt:'Flow field with a magnifying glass highlighting a governing equation'},
+  analysis: {src:'./analysis.png', alt:'Simulation of a physical field evolving over successive time steps'},
+  design: {src:'./design.png', alt:'Engineering drawings and component assemblies leading to a complete car'}
+};
+Object.values(domainImages).forEach(item => { const image = new Image(); image.src = item.src; });
 let carrier = -90, frame = 0, selected = 0;
 function draw() {
   // Fixed ring, 18-tooth sun and 24-tooth planets: move the carrier
@@ -22,6 +28,10 @@ function draw() {
 }
 function reveal() {
   const gear = gears[selected];
+  const visual = domainImages[gear.dataset.domain];
+  const image = machine.querySelector('#domain-image');
+  image.src = visual.src;
+  image.alt = visual.alt;
   machine.querySelector('#domain-title').textContent = gear.textContent.trim();
   const paragraph = machine.querySelector('#domain-' + gear.dataset.domain).content.querySelector('p');
   machine.querySelector('#domain-description').replaceChildren(...[...paragraph.childNodes].map(node => node.cloneNode(true)));
