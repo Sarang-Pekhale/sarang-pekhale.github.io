@@ -43,6 +43,25 @@
 <template id="domain-design"><p>Engineering a physical system to satisfy predefined objectives and constraints by varying geometries, materials, operating parameters, etc to achieve the target objectives for example performance, safety, cost, etc, answering <em>"what configuration achieves the goal?"</em>.</p></template>
 <noscript><p>Enable JavaScript to select a research domain. The research details below remain available.</p></noscript>
 </section>
+<section class="research-challenges" aria-label="Challenges and the reasoning needed to address them">
+<article class="challenge-panel" aria-labelledby="challenges-title">
+<h2 id="challenges-title">Challenges</h2>
+<ol class="challenge-items">
+<li><h3>Manual hypothesis generation and validation</h3><p>Researchers must formulate candidate explanations, choose suitable tests, and interpret the results. Exploring a large space of possible models makes this process demanding and slow.</p></li>
+<li><h3>Continuous expert monitoring and intervention</h3><p>Computational workflows often require experts to diagnose failures, judge reliability, and decide when to change methods. These decisions draw on physical knowledge and evidence spread across equations, numerical data, and visualizations.</p></li>
+<li><h3>Costly trial and error</h3><p>Testing candidate models or designs can require repeated, expensive simulations. Without using previous results to guide the next choice, substantial effort can be spent on unpromising candidates.</p></li>
+</ol>
+</article>
+<article class="reasoning-panel" aria-labelledby="reasoning-title">
+<h2 id="reasoning-title">Multimodal Reasoning</h2>
+<p class="reasoning-intro">Connect equations, numerical data, visual evidence, and scientific knowledge to guide the next step.</p>
+<div class="reasoning-pairs">
+<div class="reasoning-pair"><div><h3>Decide</h3><p>Choose the next hypothesis, computational method, or design candidate based on the task and the available evidence.</p></div><div><h3>Scientific Knowledge</h3><p>Use physical laws, domain expertise, and constraints to guide choices and rule out implausible options.</p></div></div>
+<div class="reasoning-pair"><div><h3>Evaluate</h3><p>Assess whether a result is physically consistent, sufficiently accurate, and relevant to the objective.</p></div><div><h3>Computational Evidence</h3><p>Interpret simulation outputs, numerical diagnostics, plots, and observed data together to identify agreement, uncertainty, and failure.</p></div></div>
+<div class="reasoning-pair"><div><h3>Adapt</h3><p>Revise the hypothesis, method, or design when new evidence reveals a limitation or a more promising direction.</p></div><div><h3>Feedback</h3><p>Use validation results and discrepancies to inform the next iteration, rather than repeating the same unsuccessful choices.</p></div></div>
+</div>
+</article>
+</section>
 <div id="research-list">
 <article class="research-entry" id="hybrid"><p class="category">Scientific computing</p><h2>Hybrid neural–numerical solvers</h2><p>I am developing an agentic hybrid solver framework that brings neural operators and classical numerical solvers into the same simulation. My interests include physics-based diagnostics, deciding when to switch solvers without runtime ground truth, and reducing discontinuities at the handover.</p><p class="topics"><strong>Topics:</strong> Neural operators · Agentic AI · PDEs</p></article>
 <article class="research-entry" id="discovery"><p class="category">Scientific discovery</p><h2>Agentic scientific discovery</h2><p>I am interested in agentic scientific discovery: connecting observations of a system to candidate mathematical descriptions, and evaluating those descriptions with scientific evidence. This direction brings together multimodal reasoning, physical knowledge, and numerical validation.</p><p class="topics"><strong>Topics:</strong> Multimodal reasoning · Equation discovery · AI for science</p></article>
