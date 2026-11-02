@@ -45,3 +45,12 @@ body[data-page="research"] main.container{max-width:1160px}
 .research-direction h2{font-size:28px;font-weight:500;margin:0 0 18px}
 .research-direction p{font-size:16px;line-height:1.8;margin:0}
 @media(max-width:480px){.research-direction{padding:22px 18px;min-height:140px}.research-direction h2{font-size:25px}}
+
+/* Keep the opening research diagram inside the available desktop viewport. */
+@media(min-width:761px){
+ body[data-page="research"] main.page{margin-top:24px}
+ body[data-page="research"] .post-header{margin-bottom:18px}
+ .research-machine{grid-template-columns:minmax(0,1fr) minmax(240px,var(--research-gear-size,420px));min-height:0;margin-top:18px;margin-bottom:48px}
+ .gear-stage{width:100%;max-width:var(--research-gear-size,420px);justify-self:end}
+ .domain-detail{padding:24px}
+}

@@ -67,4 +67,19 @@ gears.forEach((gear, index) => {
 motion.addEventListener('change', () => { if (selected !== null) select(selected); });
 draw();
 reveal();
+// Measure the space below the introduction instead of assuming a screen size.
+// Document coordinates keep sizing stable when the visitor scrolls.
+function fitOpeningView() {
+  if (!matchMedia('(min-width: 761px)').matches) {
+    machine.style.removeProperty('--research-gear-size');
+    return;
+  }
+  const top = machine.getBoundingClientRect().top + window.scrollY;
+  const available = window.innerHeight - top - 24;
+  machine.style.setProperty('--research-gear-size', Math.max(240, Math.min(500, available)) + 'px');
+}
+fitOpeningView();
+window.addEventListener('resize', fitOpeningView);
+window.addEventListener('pageshow', fitOpeningView);
+if (document.fonts) document.fonts.ready.then(fitOpeningView);
 })();
