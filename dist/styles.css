@@ -176,3 +176,7 @@ body[data-page="about"] .page{margin-bottom:0;flex:0 0 auto}
 @media(max-width:480px){.closing-contact{padding:72px 20px 40px}.closing-contact-content{padding:28px 20px}.contact-icons{max-width:200px;gap:14px;margin:0 auto}.contact-icon{width:48px;height:48px}.contact-icon img{width:30px;height:30px}.contact-iit img{width:40px;height:40px}.contact-ending .site-footer{padding:16px 20px 24px}}
 @media(prefers-reduced-motion:reduce){.contact-icon{transition:none}}
 @media print{.contact-ending{min-height:0;background:none}.closing-contact{display:block;padding:24px 0;text-align:left;break-inside:avoid}.closing-contact-content{max-width:none;padding:0;background:none}.closing-invitation{font-size:16pt}.contact-icons{max-width:none;justify-content:flex-start;gap:12px;margin:0}.contact-icon{width:48px;height:48px;background:none;border:0}}
+
+/* Publication service colors. */
+body[data-page="publications"] .post-header a[href^="https://scholar.google.com/"]{color:#4285f4}
+body[data-page="publications"] #paper-pekhale2026mage .paper-label{background:#b31b1b;color:#fff}
