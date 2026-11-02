@@ -7,10 +7,9 @@ const gears = [...machine.querySelectorAll('[data-domain]')];
 const baseAngles = [-90, 150, 30];
 const callout = machine.querySelector('.domain-callout');
 callout.hidden = false;
-callout.setAttribute('aria-hidden', 'true');
 const sun = machine.querySelector('.gear-sun');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
-let carrier = 0, frame = 0, selected = null;
+let carrier = -90, frame = 0, selected = 0;
 function draw() {
   // Fixed ring, 18-tooth sun and 24-tooth planets: move the carrier
   // and spin each gear at the planetary pitch-circle ratio.
@@ -25,7 +24,7 @@ function reveal() {
   const gear = gears[selected];
   machine.querySelector('#domain-title').textContent = gear.textContent.trim();
   const paragraph = machine.querySelector('#domain-' + gear.dataset.domain).content.querySelector('p');
-  machine.querySelector('#domain-description').textContent = paragraph.textContent;
+  machine.querySelector('#domain-description').replaceChildren(...[...paragraph.childNodes].map(node => node.cloneNode(true)));
   gears.forEach((item, i) => item.setAttribute('aria-pressed', String(i === selected)));
   callout.setAttribute('aria-hidden', 'false');
   callout.classList.add('is-visible');
@@ -67,4 +66,5 @@ gears.forEach((gear, index) => {
 });
 motion.addEventListener('change', () => { if (selected !== null) select(selected); });
 draw();
+reveal();
 })();
