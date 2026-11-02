@@ -5,19 +5,19 @@ body[data-page="research"] main.container{max-width:1160px}
 .gear-ring,.gear-sun,.gear-planet{fill:#000;stroke:#000;stroke-width:1}
 .gear-hub{fill:#fff;stroke:#000;stroke-width:1}
 .gear-domain{cursor:pointer;outline:none}
-.gear-domain text{font:500 16px Roboto,Arial,sans-serif;fill:#000;pointer-events:none}
-.gear-center{font:500 13px Roboto,Arial,sans-serif;fill:#000}
+.gear-domain text{font:700 16px Roboto,Arial,sans-serif;fill:#000;pointer-events:none}
+.gear-center{font:700 13px Roboto,Arial,sans-serif;fill:#000}
 .gear-domain:hover .gear-hub{fill:#eee}
 .gear-domain[aria-pressed="true"] .gear-hub{stroke-width:4}
 .gear-domain:focus-visible .gear-hub{stroke-width:4;stroke-dasharray:4 3}
 .gear-instruction{text-align:center;font-size:13px;color:#555;margin:12px 0 0}
 .domain-callout{grid-column:1;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 65px;align-items:center;gap:20px;padding-bottom:32px}
-.domain-detail{border:1px solid #000;padding:30px;overflow-wrap:anywhere}
+.domain-detail{border:1px solid #dedede;border-radius:24px;background:#f3f3f3;padding:30px;overflow-wrap:anywhere}
 .domain-detail h2{font-size:28px;font-weight:400;margin-bottom:18px}
 .domain-detail p{font-size:16px;line-height:1.8;margin:0;white-space:pre-line}
 .domain-arrow{display:block;width:65px;fill:#000}
-.domain-callout.is-visible{animation:domain-appear .3s ease-out both}
-@keyframes domain-appear{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+.domain-callout{opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;pointer-events:none}
+.domain-callout.is-visible{opacity:1;visibility:visible;transform:translateX(0);transition-delay:0s;pointer-events:auto}
 #research-list{max-width:800px;margin:0 auto}
 @media(max-width:760px){.research-machine{grid-template-columns:1fr;gap:12px;min-height:0;margin-top:24px}.gear-stage{grid-column:1;grid-row:1;max-width:480px;width:100%;margin:auto}.domain-callout{grid-column:1;grid-row:2;display:flex;flex-direction:column-reverse;gap:8px;padding:0}.domain-arrow{width:44px;height:44px;transform:rotate(90deg)}.domain-detail{width:100%;padding:22px}.research-machine{margin-bottom:36px}}
-@media(prefers-reduced-motion:reduce){.domain-callout.is-visible{animation:none}}
+@media(prefers-reduced-motion:reduce){.domain-callout,.domain-callout.is-visible{transition:none;transform:none}}

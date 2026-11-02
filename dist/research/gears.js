@@ -5,6 +5,8 @@ if (!machine) return;
 const gears = [...machine.querySelectorAll('[data-domain]')];
 const baseAngles = [-90, 30, 150];
 const callout = machine.querySelector('.domain-callout');
+callout.hidden = false;
+callout.setAttribute('aria-hidden', 'true');
 const sun = machine.querySelector('.gear-sun');
 const motion = matchMedia('(prefers-reduced-motion: reduce)');
 let carrier = 0, frame = 0, selected = null;
@@ -24,14 +26,15 @@ function reveal() {
   const paragraph = machine.querySelector('#domain-' + gear.dataset.domain).content.querySelector('p');
   machine.querySelector('#domain-description').textContent = paragraph.textContent;
   gears.forEach((item, i) => item.setAttribute('aria-pressed', String(i === selected)));
-  callout.hidden = false;
+  callout.setAttribute('aria-hidden', 'false');
   callout.classList.add('is-visible');
   machine.removeAttribute('aria-busy');
 }
 function select(index) {
+  if (selected === index && callout.classList.contains('is-visible')) return;
   cancelAnimationFrame(frame);
   selected = index;
-  callout.hidden = true;
+  callout.setAttribute('aria-hidden', 'true');
   callout.classList.remove('is-visible');
   machine.setAttribute('aria-busy', 'true');
   const start = carrier;
