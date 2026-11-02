@@ -12,7 +12,7 @@ body[data-page="research"] main.container{max-width:1160px}
 .gear-domain:focus-visible .gear-hub{stroke-width:4;stroke-dasharray:4 3}
 .domain-callout{grid-column:1;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 65px;align-items:center;gap:20px}
 .domain-detail{border:1px solid #dedede;border-radius:24px;background:#f3f3f3;padding:30px;overflow-wrap:anywhere}
-.domain-detail h2{font-size:28px;font-weight:400;margin-bottom:18px}
+.domain-detail h2{font-size:28px;font-weight:400;margin:0}
 .domain-detail p{font-size:16px;line-height:1.8;margin:0;white-space:pre-line}
 .domain-arrow{display:block;width:65px;fill:#000}
 .domain-callout{opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;pointer-events:none}
@@ -59,9 +59,11 @@ body[data-page="research"] main.container{max-width:1160px}
 .reasoning-icon{display:block;flex:0 0 36px;width:36px;height:36px;color:#408f20}
 @media(max-width:480px){.reasoning-item-title{gap:8px}.reasoning-icon{flex-basis:28px;width:28px;height:28px}}
 
-.domain-story{display:flex;flex-direction:column;align-items:stretch;gap:16px;min-width:0}
-.domain-image{display:block;width:100%;height:160px;object-fit:contain;margin:0 auto}
-@media(min-width:761px){.domain-image{height:min(160px,calc(var(--research-gear-size,500px) * .32))}}
+/* One card: heading, large illustration, then domain explanation. */
+.domain-story{display:grid;grid-template-rows:auto minmax(120px,1fr) auto;gap:16px;min-width:0;width:100%;box-sizing:border-box}
+.domain-image{display:block;width:100%;height:100%;min-height:0;object-fit:contain;margin:0 auto;mix-blend-mode:multiply}
+@media(min-width:761px){.domain-story{height:calc(var(--research-gear-size,420px) * 448 / 490);min-height:380px}.domain-detail p{line-height:1.65}}
+@media(max-width:760px){.domain-story{grid-template-rows:auto auto auto}.domain-image{height:220px}}
 
 .mage-framework{margin:28px 0 0}
 .mage-framework img{display:block;width:100%;height:auto;background:white;border-radius:8px}
