@@ -1,26 +1,23 @@
 body[data-page="research"] main.container{max-width:1160px}
-.research-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,480px);gap:52px;align-items:start}
-.research-machine{position:sticky;top:88px;background:linear-gradient(145deg,#f8fbf3,#edf4e5);border:1px solid #dce6d2;border-radius:24px;padding:26px 24px 22px;margin-top:24px;color:#263727}
-.machine-eyebrow{font-size:11px;font-weight:600;letter-spacing:.17em;color:#587340;margin-bottom:9px}
-.research-machine h2{font-size:26px;letter-spacing:-.5px;font-weight:400}
-.machine-intro{font-size:14px;color:#52634b;margin-bottom:4px}
-.gear-diagram{display:block;width:100%;height:auto;overflow:visible;margin:12px auto}
-.gear-ring{fill:#829d69;stroke:#637f4c;stroke-width:1}
-.gear-sun{fill:#435d38;stroke:#31492a;stroke-width:1}
-.gear-planet{fill:#b4d38c;stroke:#6d8b50;stroke-width:1}
-.gear-domain[data-domain="analysis"] .gear-planet{fill:#cbdba8}
-.gear-domain[data-domain="design"] .gear-planet{fill:#9fbe81}
-.gear-hub{fill:#f6faef;stroke:#7d9864;stroke-width:1}
+.research-machine{display:grid;grid-template-columns:minmax(0,1fr) minmax(360px,500px);gap:22px;align-items:center;min-height:530px;margin:32px 0 56px;color:#000}
+.gear-stage{grid-column:2;grid-row:1}
+.gear-diagram{display:block;width:100%;height:auto;overflow:visible}
+.gear-ring,.gear-sun,.gear-planet{fill:#000;stroke:#000;stroke-width:1}
+.gear-hub{fill:#fff;stroke:#000;stroke-width:1}
 .gear-domain{cursor:pointer;outline:none}
-.gear-domain text{font:500 16px Roboto,Arial,sans-serif;fill:#273c22;pointer-events:none}
-.gear-center{font:500 13px Roboto,Arial,sans-serif;fill:#273c22}
-.gear-domain:hover .gear-hub,.gear-domain[aria-pressed="true"] .gear-hub{fill:#fff;stroke:#37582a;stroke-width:3}
-.gear-domain:focus-visible .gear-hub{stroke:#172e12;stroke-width:4;stroke-dasharray:5 3}
-.machine-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;color:#52634b}
-.gear-toggle{border:1px solid #bdcdb0;background:#fff;border-radius:20px;padding:7px 12px;color:#31492a;font-size:12px;min-height:36px}
-.gear-toggle:hover{background:#e4efd9}
-.domain-detail{border-top:1px solid #ceddc1;margin-top:18px;padding-top:18px;min-height:136px}
-.domain-detail h3{font-size:20px;font-weight:500}
-.domain-detail p{font-size:14px;line-height:1.6;margin:0}
-@media(max-width:850px){.research-layout{grid-template-columns:1fr;gap:12px}.research-machine{position:static;grid-row:1;width:100%;max-width:500px;margin:0 auto 24px}body[data-page="research"] main.container{max-width:800px}}
-@media(max-width:420px){.research-machine{padding:20px 15px}.machine-controls{font-size:11px}.research-machine h2{font-size:24px}}
+.gear-domain text{font:500 16px Roboto,Arial,sans-serif;fill:#000;pointer-events:none}
+.gear-center{font:500 13px Roboto,Arial,sans-serif;fill:#000}
+.gear-domain:hover .gear-hub{fill:#eee}
+.gear-domain[aria-pressed="true"] .gear-hub{stroke-width:4}
+.gear-domain:focus-visible .gear-hub{stroke-width:4;stroke-dasharray:4 3}
+.gear-instruction{text-align:center;font-size:13px;color:#555;margin:12px 0 0}
+.domain-callout{grid-column:1;grid-row:1;display:grid;grid-template-columns:minmax(0,1fr) 65px;align-items:center;gap:20px;padding-bottom:32px}
+.domain-detail{border:1px solid #000;padding:30px;overflow-wrap:anywhere}
+.domain-detail h2{font-size:28px;font-weight:400;margin-bottom:18px}
+.domain-detail p{font-size:16px;line-height:1.8;margin:0;white-space:pre-line}
+.domain-arrow{display:block;width:65px;fill:#000}
+.domain-callout.is-visible{animation:domain-appear .3s ease-out both}
+@keyframes domain-appear{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+#research-list{max-width:800px;margin:0 auto}
+@media(max-width:760px){.research-machine{grid-template-columns:1fr;gap:12px;min-height:0;margin-top:24px}.gear-stage{grid-column:1;grid-row:1;max-width:480px;width:100%;margin:auto}.domain-callout{grid-column:1;grid-row:2;display:flex;flex-direction:column-reverse;gap:8px;padding:0}.domain-arrow{width:44px;height:44px;transform:rotate(90deg)}.domain-detail{width:100%;padding:22px}.research-machine{margin-bottom:36px}}
+@media(prefers-reduced-motion:reduce){.domain-callout.is-visible{animation:none}}

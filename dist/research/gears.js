@@ -2,48 +2,65 @@
 'use strict';
 const machine = document.querySelector('.research-machine');
 if (!machine) return;
-const descriptions = {
- discovery: ['Discovery', 'Connect observations, physical knowledge, and multimodal reasoning to explore candidate scientific explanations.'],
- analysis: ['Analysis', 'Combine numerical simulation, physics-based diagnostics, and machine learning to understand and evaluate physical systems.'],
- design: ['Design', 'Connect scientific insight and predictive models to explore engineering possibilities and inform design decisions.']
-};
 const gears = [...machine.querySelectorAll('[data-domain]')];
-function select(gear) {
- gears.forEach(item => item.setAttribute('aria-pressed', String(item === gear)));
- const [title, description] = descriptions[gear.dataset.domain];
- machine.querySelector('#domain-title').textContent = title;
- machine.querySelector('#domain-description').textContent = description;
-}
-gears.forEach(gear => {
- gear.addEventListener('click', () => select(gear));
- gear.addEventListener('keydown', event => {
-  if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); select(gear); }
- });
-});
-const motion = matchMedia('(prefers-reduced-motion: reduce)');
-const toggle = machine.querySelector('.gear-toggle');
-const ring = machine.querySelector('.gear-ring');
+const baseAngles = [-90, 30, 150];
+const callout = machine.querySelector('.domain-callout');
 const sun = machine.querySelector('.gear-sun');
-const planets = [...machine.querySelectorAll('.gear-planet')];
-let paused = motion.matches, frame = 0, last = 0, angle = 0;
-// Fixed planet axes. Pitch-circle ratios: sun 18, planets 24, ring 66 teeth.
+const motion = matchMedia('(prefers-reduced-motion: reduce)');
+let carrier = 0, frame = 0, selected = null;
 function draw() {
- sun.setAttribute('transform', 'rotate(' + angle + ')');
- ring.setAttribute('transform', 'rotate(' + (-angle * 18 / 66) + ')');
- planets.forEach(planet => planet.setAttribute('transform', 'rotate(' + (-angle * 18 / 24 ) + ')'));
+  // Fixed ring, 18-tooth sun and 24-tooth planets: move the carrier
+  // and spin each gear at the planetary pitch-circle ratio.
+  sun.setAttribute('transform', 'rotate(' + carrier * (1 + 66 / 18) + ')');
+  gears.forEach((gear, i) => {
+    const angle = (baseAngles[i] + carrier) * Math.PI / 180;
+    gear.setAttribute('transform', 'translate(' + 126 * Math.cos(angle) + ' ' + 126 * Math.sin(angle) + ')');
+    gear.querySelector('.gear-planet').setAttribute('transform', 'rotate(' + carrier * (1 - 66 / 24) + ')');
+  });
 }
-function tick(time) {
- if (last) angle = (angle + Math.min(time - last, 64) * .009) % 15840;
- last = time; draw(); frame = requestAnimationFrame(tick);
+function reveal() {
+  const gear = gears[selected];
+  machine.querySelector('#domain-title').textContent = gear.textContent.trim();
+  const paragraph = machine.querySelector('#domain-' + gear.dataset.domain).content.querySelector('p');
+  machine.querySelector('#domain-description').textContent = paragraph.textContent;
+  gears.forEach((item, i) => item.setAttribute('aria-pressed', String(i === selected)));
+  callout.hidden = false;
+  callout.classList.add('is-visible');
+  machine.removeAttribute('aria-busy');
 }
-function sync() {
- cancelAnimationFrame(frame); last = 0;
- toggle.textContent = paused ? 'Play animation' : 'Pause animation';
- if (!paused && !document.hidden) frame = requestAnimationFrame(tick);
+function select(index) {
+  cancelAnimationFrame(frame);
+  selected = index;
+  callout.hidden = true;
+  callout.classList.remove('is-visible');
+  machine.setAttribute('aria-busy', 'true');
+  const start = carrier;
+  // Place the chosen gear immediately to the right of the left-facing arrow.
+  const desired = 180 - baseAngles[index];
+  const delta = ((desired - start + 540) % 360 + 360) % 360 - 180;
+  const target = start + delta;
+  if (motion.matches || Math.abs(delta) < .01) {
+    carrier = target; draw(); reveal(); return;
+  }
+  const startTime = performance.now();
+  function tick(now) {
+    const progress = Math.min((now - startTime) / 1100, 1);
+    const eased = progress * progress * (3 - 2 * progress);
+    carrier = start + delta * eased;
+    draw();
+    if (progress < 1) frame = requestAnimationFrame(tick);
+    else reveal();
+  }
+  frame = requestAnimationFrame(tick);
 }
-toggle.hidden = false;
-toggle.addEventListener('click', () => { paused = !paused; sync(); });
-motion.addEventListener('change', () => { paused = motion.matches; sync(); });
-document.addEventListener('visibilitychange', sync);
-draw(); sync();
+gears.forEach((gear, index) => {
+  gear.addEventListener('click', () => select(index));
+  gear.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault(); select(index);
+    }
+  });
+});
+motion.addEventListener('change', () => { if (selected !== null) select(selected); });
+draw();
 })();
