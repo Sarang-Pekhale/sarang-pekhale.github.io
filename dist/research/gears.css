@@ -17,7 +17,6 @@ body[data-page="research"] main.container{max-width:1160px}
 .domain-arrow{display:block;width:65px;fill:#000}
 .domain-callout{opacity:0;visibility:hidden;transform:translateX(12px);transition:opacity .28s ease,transform .28s ease,visibility 0s linear .28s;pointer-events:none}
 .domain-callout.is-visible{opacity:1;visibility:visible;transform:translateX(0);transition-delay:0s;pointer-events:auto}
-#research-list{max-width:800px;margin:0 auto}
 @media(max-width:760px){.research-machine{grid-template-columns:1fr;gap:12px;min-height:0;margin-top:24px}.gear-stage{grid-column:1;grid-row:1;max-width:480px;width:100%;margin:auto}.domain-callout{grid-column:1;grid-row:2;display:flex;flex-direction:column-reverse;gap:8px;padding:0}.domain-arrow{width:44px;height:44px;transform:rotate(90deg)}.domain-detail{width:100%;padding:22px}.research-machine{margin-bottom:36px}}
 @media(prefers-reduced-motion:reduce){.domain-callout,.domain-callout.is-visible{transition:none;transform:none}}
 
@@ -40,3 +39,9 @@ body[data-page="research"] main.container{max-width:1160px}
 .reasoning-column:last-child{padding-left:22px}
 @media(max-width:980px){.research-challenges{grid-template-columns:1fr}.challenge-panel,.reasoning-panel{padding:28px}}
 @media(max-width:480px){.challenge-panel,.reasoning-panel{padding:22px 18px}.research-challenges h2{font-size:25px}.research-challenges h3{font-size:17px}.research-challenges p{font-size:14px}.reasoning-column:first-child{padding-right:12px}.reasoning-column:last-child{padding-left:14px}.challenge-items li{padding-left:30px}}
+
+.research-directions{display:grid;gap:24px;margin:0 0 24px}
+.research-direction{background:#fff9df;border:1px solid #eee4b9;border-radius:24px;padding:30px;min-height:160px}
+.research-direction h2{font-size:28px;font-weight:500;margin:0 0 18px}
+.research-direction p{font-size:16px;line-height:1.8;margin:0}
+@media(max-width:480px){.research-direction{padding:22px 18px;min-height:140px}.research-direction h2{font-size:25px}}
