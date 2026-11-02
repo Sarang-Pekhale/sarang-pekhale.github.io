@@ -54,3 +54,7 @@ body[data-page="research"] main.container{max-width:1160px}
  .gear-stage{width:100%;max-width:var(--research-gear-size,420px);justify-self:end}
  .domain-detail{padding:24px}
 }
+
+.reasoning-item-title{display:flex;align-items:center;gap:12px}
+.reasoning-icon{display:block;flex:0 0 36px;width:36px;height:36px;color:#408f20}
+@media(max-width:480px){.reasoning-item-title{gap:8px}.reasoning-icon{flex-basis:28px;width:28px;height:28px}}
