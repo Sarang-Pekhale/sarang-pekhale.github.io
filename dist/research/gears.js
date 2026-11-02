@@ -3,7 +3,8 @@
 const machine = document.querySelector('.research-machine');
 if (!machine) return;
 const gears = [...machine.querySelectorAll('[data-domain]')];
-const baseAngles = [-90, 30, 150];
+// Clockwise arrival at the pointer: Discovery, Analysis, Design.
+const baseAngles = [-90, 150, 30];
 const callout = machine.querySelector('.domain-callout');
 callout.hidden = false;
 callout.setAttribute('aria-hidden', 'true');
