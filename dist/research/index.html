@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="./gears.css">
 <script src="./gears.js" defer></script>
+<script src="./mage-animation.js" defer></script>
 <script>document.documentElement.classList.add('js');</script>
 <script src="../content.js" defer></script>
 <script src="../app.js" defer></script>
@@ -64,8 +65,9 @@
 <h2 id="equation-discovery-title">Governing Equation Discovery</h2>
 <p>I develop agentic AI frameworks that infer the governing laws of physical systems from observational data. My recent work, <strong>MAGE</strong>, draws inspiration from the workflow of human scientists to discover governing partial differential equations. It coordinates role specialized agents for data visualization, physical interpretation, hypothesis generation, and candidate validation, connecting multimodal observations with mathematical explanations.</p>
 <p style="margin-top:16px"><strong>W1:</strong> <a href="../publications/#paper-pekhale2026mage" style="text-decoration:underline;text-underline-offset:3px">See, Hypothesize, Validate: Multimodal Agentic Framework for Discovering Governing PDEs</a></p>
-<!-- Add the MAGE GIF inside this figure and remove hidden when ready. -->
-<figure hidden>
+<figure class="mage-framework">
+<picture><source media="(prefers-reduced-motion: reduce)" srcset="./mage-framework.png"><img id="mage-animation" src="./mage-framework.gif" width="1800" height="569" loading="lazy" alt="MAGE framework: input data and shared chat memory, four specialized agents, a confidence decision gate, output, and retry and restart paths."></picture>
+<div class="mage-controls"><button type="button" id="mage-toggle" hidden>Show complete diagram</button><a href="./mage-framework.gif" target="_blank" rel="noopener">View animation full size</a><a href="./mage-framework.png" target="_blank" rel="noopener">View complete diagram</a></div>
 <figcaption>The MAGE workflow connects data visualization and physical interpretation with hypothesis generation and validation to discover governing PDEs.</figcaption>
 </figure>
 </article>
